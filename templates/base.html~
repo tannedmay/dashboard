@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{% block title %}{% endblock %}</title>
+    {% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}"  />
+</head>
+
+<body>
+<div id="header">
+	<div class="center">
+    	<a href="/home/"><div class="home">Home</div></a>
+	<a href="/docs/"><div class="head-elem">Document</div></a>
+	{% if logged_in %}
+		<a href="/logout/"><div class="head-elem">Log Out</div></a>
+		<a href="/account/"><div class="head-elem">Account</div></a>
+		{% if graphite_url %}
+			<a href={{ graphite_url }}><div class="head-elem">Dashboard</div></a>
+		{% else %}
+			<a href="/login/"><div class="head-elem">Dashboard</div></a>
+		{% endif %}
+	{% else %}
+	    	<a href="/login/"><div class="head-elem">Log In</div></a>
+	        <a href="/register/"><div class="head-elem">Sign Up</div></a>
+	{% endif %}
+        </div>
+</div>
+<div id="contents">
+	{% load staticfiles %}
+<img src="{% static "back-home.jpg" %}" style="width:100%; height:600px; position:relative;" />
+	
+    <div id="home-image">	
+        <div class="center">
+        	{% block content %}
+		{% endblock %}
+        </div>
+    </div>
+</div>
+<div id="footer">
+	<div class="center">
+	{% if logged_in %}
+    	<p><center> <a href="/account/">Account</a> | <a href="/home/">Home</a> | <a href="/docs/">Documents</a> | <a href="/logout/">Log Out</a> </center> </p>
+	{% else %}
+	<p><center> <a href="/home/">Home</a> | <a href="/docs/">Documents</a> | <a href="/register/">Sign Up</a> | <a href="/login/">Log In</a> </center> </p>
+	{% endif %}
+        <p> <center> &copy; Copyright 2014, Hosted Graphite. All rights reserved. </center> </p>
+    </div>
+</div>
+</body>
+</html>

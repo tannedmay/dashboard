@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+{% block content%}
+	<div id="login">
+       	<h1> Please enter the details to login </h1>
+       	<form method="post" action="">
+               	<br />
+               	<input type="email" name="email" placeholder="Enter Your Email" required="required" value="{{ email }}"/>
+                <br />
+                <input type="password" name="password" placeholder="Enter your Password" required="required" />
+                <input type="submit" name="submit" value="Log In"  />
+		{% if error %}
+			<div id="error">
+				<p> Enter a valid email and its corresponding password. </p>
+			</div>
+		{% endif %}
+                <p> Forgot Password ?  </p>
+	</form>
+        </div>
+{% endblock %}
+

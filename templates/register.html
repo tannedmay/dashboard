@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}register{% endblock %}
+{% block content%}
+	<div id="signup">
+       	<h1> Please Enter the details to get registered. </h1>
+       	<form method="post" action="">
+      		<input type="text" name="name" placeholder="Enter Your Name" required="required" value="{{ name }}" />
+		{% if errors.name %}
+			<div id="error">
+				<p>{{ errors.name }}</p>
+			</div>
+		{% endif %}           
+              	<input type="email" name="email" placeholder="Enter Your Email" required="required" value="{{ email }}" />
+		{% if errors.email %}
+			<div id="error">
+				<p>{{ errors.email }}</p>
+			</div>
+		{% endif %}
+		<br />           
+                <input type="password" name="password1" placeholder="Enter your Password" required="required" />
+		<br />
+                <input type="password" name="password2" placeholder="Re-Enter your Password" required="required" />
+		{% if errors.password %}
+			<div id="error">
+				<p>{{ errors.password }}</p>
+			</div>
+		{% endif %}
+		<br />
+                <input type="submit" name="submit" value="Sign up"  />           
+        </form>
+        </div>
+{% endblock %}
